@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DriveSafe AI - Driver Drowsiness Detection</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+
+            <div class="brand">
+                <p class="eyebrow">INNOVATEX 2.0</p>
+
+                <h1>DriveSafe AI</h1>
+
+                <p class="tagline">
+                    Detect. Alert. Protect.
+                </p>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <span>System Ready</span>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Camera Section -->
+        <section class="camera-section">
+
+            <div class="section-heading">
+                <h2>Driver Monitoring</h2>
+
+                <p>
+                    Real-time camera monitoring for driver alertness
+                </p>
+            </div>
+
+
+            <!-- Camera Container -->
+            <div class="camera-container">
+
+                <video
+                    id="camera"
+                    autoplay
+                    playsinline
+                    muted>
+                </video>
+
+                <!-- Camera Overlay -->
+                <div class="camera-overlay">
+
+                    <div class="face-box">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <!-- Message shown before camera starts -->
+                <div id="camera-message" class="camera-message">
+
+                    <div class="camera-icon">
+                        📷
+                    </div>
+
+                    <h3>Camera Not Started</h3>
+
+                    <p>
+                        Start monitoring to begin driver analysis.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Camera Controls -->
+            <div class="camera-controls">
+
+                <button id="start-btn">
+                    Start Monitoring
+                </button>
+
+                <button id="stop-btn" disabled>
+                    Stop Monitoring
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Driver Status -->
+
+                <section class="dashboard-section">
+
+    <div class="section-heading">
+        <h2>Driver Monitoring</h2>
+        <p>Real-time driver condition analysis</p>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <!-- Driver Status -->
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🚗
+            </div>
+
+            <div class="card-content">
+                <span class="card-label">
+                    Driver Status
+                </span>
+
+                <h3 id="driver-status">
+                    Not Monitoring
+                </h3>
+            </div>
+
+        </div>
+
+
+        <!-- Fatigue Risk -->
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                ⚠️
+            </div>
+
+            <div class="card-content">
+                <span class="card-label">
+                    Fatigue Risk
+                </span>
+
+                <h3 id="fatigue-risk">
+                    0%
+                </h3>
+            </div>
+
+        </div>
+
+
+        <!-- Eye Status -->
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                👁️
+            </div>
+
+            <div class="card-content">
+                <span class="card-label">
+                    Eye Status
+                </span>
+
+                <h3 id="eye-status">
+                    No Data
+                </h3>
+            </div>
+
+        </div>
+
+
+        <!-- Yawning -->
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                😮
+            </div>
+
+            <div class="card-content">
+                <span class="card-label">
+                    Yawning
+                </span>
+
+                <h3 id="yawning-status">
+                    No Data
+                </h3>
+            </div>
+
+        </div>
+
+
+        <!-- NEW: Head Position -->
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                🧠
+            </div>
+
+            <div class="card-content">
+                <span class="card-label">
+                    Head Position
+                </span>
+
+                <h3 id="head-status">
+                    No Data
+                </h3>
+            </div>
+
+        </div>
+
+
+        <!-- NEW: Head Nods -->
+        <div class="dashboard-card">
+
+            <div class="card-icon">
+                ↕️
+            </div>
+
+            <div class="card-content">
+                <span class="card-label">
+                    Head Nods
+                </span>
+
+                <h3 id="head-nods">
+                    0
+                </h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+            </div>
+
+        </section>
+
+        <!-- ================================
+     GPS LOCATION
+================================ -->
+
+<section class="gps-section">
+
+    <div class="section-heading">
+
+        <h2>Vehicle Location</h2>
+
+        <p>
+            Real-time GPS location of the vehicle
+        </p>
+
+    </div>
+
+    <div class="gps-card">
+
+        <div class="gps-status">
+
+            <span id="gps-dot"></span>
+
+            <span id="gps-status">
+                GPS Not Connected
+            </span>
+
+        </div>
+
+        <div class="gps-data">
+
+            <div class="gps-item">
+
+                <span>
+                    Latitude
+                </span>
+
+                <strong id="latitude">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="gps-item">
+
+                <span>
+                    Longitude
+                </span>
+
+                <strong id="longitude">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="gps-item">
+
+                <span>
+                    Accuracy
+                </span>
+
+                <strong id="gps-accuracy">
+                    --
+                </strong>
+
+            </div>
+
+        </div>
+
+        <button id="gps-btn">
+            📍 Get Vehicle Location
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ================================
+     DRIVER PROFILE
+================================ -->
+
+<section class="driver-profile-section">
+
+    <div class="section-heading">
+
+        <h2>Driver Profile</h2>
+
+        <p>
+            Driver and vehicle safety information
+        </p>
+
+    </div>
+
+
+    <div class="profile-card">
+
+        <div class="profile-header">
+
+            <div class="profile-avatar">
+                👤
+            </div>
+
+            <div>
+
+                <h3 id="driver-name">
+                    Vinod Kumar
+                </h3>
+
+                <p>
+                    Driver ID:
+                    <span id="driver-id">
+                        DR-104
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-details">
+
+            <div class="profile-item">
+
+                <span>Vehicle</span>
+
+                <strong id="vehicle-number">
+                    BR-01-AB-1234
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <span>Experience</span>
+
+                <strong id="driver-experience">
+                    6 Years
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <span>Total Trips</span>
+
+                <strong id="total-trips">
+                    38
+                </strong>
+
+            </div>
+
+
+            <div class="profile-item">
+
+                <span>Safety Score</span>
+
+                <strong id="safety-score">
+                    84/100
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+        <!-- Alert Section -->
+        <section id="alert-section" class="alert-section">
+
+            <div class="alert-icon">
+                ⚠️
+            </div>
+
+            <div class="alert-content">
+
+                <h2 id="alert-title">
+                    Drowsiness Alert
+                </h2>
+
+                <p id="alert-message">
+                    Please stay alert and take a break if necessary.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+
+            <div class="section-heading">
+
+                <h2>How DriveSafe AI Works</h2>
+
+                <p>
+                    The system continuously analyses visual indicators
+                    of driver fatigue.
+                </p>
+
+            </div>
+
+
+            <div class="steps">
+
+                <!-- Step 1 -->
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <h3>Capture</h3>
+
+                    <p>
+                        Camera captures the driver's face in real time.
+                    </p>
+
+                </div>
+
+
+                <!-- Step 2 -->
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <h3>Analyze</h3>
+
+                    <p>
+                        AI analyses eyes, mouth and facial movements.
+                    </p>
+
+                </div>
+
+
+                <!-- Step 3 -->
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <h3>Detect</h3>
+
+                    <p>
+                        The system identifies signs of driver fatigue.
+                    </p>
+
+                </div>
+
+
+                <!-- Step 4 -->
+                <div class="step">
+
+                    <div class="step-number">
+                        04
+                    </div>
+
+                    <h3>Alert</h3>
+
+                    <p>
+                        Immediate warnings are provided when risk increases.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Safety Notice -->
+        <section class="safety-notice">
+
+            <h3>⚠️ Safety Notice</h3>
+
+            <p>
+                DriveSafe AI is a prototype developed for demonstration
+                and research purposes. It is not a certified safety system
+                and should not replace responsible driving, adequate rest,
+                or professional safety equipment.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            DriveSafe AI • InnovateX 2.0
+        </p>
+
+        <p>
+            AI-Powered Driver Safety Assistant
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <!-- MediaPipe Face Mesh -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
