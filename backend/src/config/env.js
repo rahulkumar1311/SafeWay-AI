@@ -13,6 +13,6 @@ export const config = {
   aiDrowsinessServiceUrl:
     process.env.AI_DROWSINESS_SERVICE_URL || 'http://localhost:8000/predict/drowsiness',
   aiTrafficSignServiceUrl:
-    process.env.AI_TRAFFIC_SIGN_SERVICE_URL || 'http://localhost:8001/predict/traffic-sign',
+    process.env.AI_TRAFFIC_SIGN_SERVICE_URL || 'http://localhost:8000/predict/traffic-sign',
   aiServiceTimeoutMs: parseInt(process.env.AI_SERVICE_TIMEOUT_MS, 10) || 5000
 };
